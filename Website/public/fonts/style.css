@@ -1,0 +1,35 @@
+.ant-carousel .slick-dots li button {
+  background-color: white;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: #fa8c16;
+}
+
+.ant-carousel .slick-dots li button:hover {
+  background-color: green;
+}
+
+.dropContent {
+  border-radius: 10px;
+}
+
+.ant-table-footer {
+  padding: 0px !important;
+}
+
+.ant-table-thead .ant-table-cell[scope="col"] {
+  background-color: #ffd591;
+  color: #873800;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.ant-table-thead .ant-table-cell[scope="colgroup"] {
+  background-color: #fa8c16;
+  color: #873800;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
