@@ -6,17 +6,26 @@ import Home from './Component/Home/Home';
 import Layout from './Component/Layouts/Layout';
 import Menu from './Component/Menu/Menu';
 import WorkshopRoom from './Component/WorkshopRoom/WorkshopRoom';
+import CuponWedding from './Component/CuponWedding/CuponWedding';
+import Loby1 from './Component/Loby/Loby1';
 
 function App() {
 
   return (<>
     <Router>
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/trang-chu' element={<Home />} />
         <Route path='/' element={<Layout />}>
           <Route path='thuc-don' element={<Menu />} />
           <Route path='phong-hoi-nghi' element={<WorkshopRoom />} />
-          
+          <Route path='khuyen-mai-tiec-cuoi' element={<CuponWedding />} />
+          <Route path='sanh-tiec/'>
+            <Route path='thuyen-rong-kim-long-hoang-long' element={<Loby1 />} />
+            
+
+          </Route>
+
         </Route>
       </Routes>
     </Router>

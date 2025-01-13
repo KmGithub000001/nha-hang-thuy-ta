@@ -14,18 +14,18 @@ interface ItemDropDown {
 function NavDropDown({ title, url, childrens }: ItemDropDown) {
   const location = useLocation();
 
-  const [curentUrl, setCurentUrl] = useState('');
-  const [items, setItems] = useState<MenuProps['items']>([]);
-
+  const [active, setActive] = useState('');
   useEffect(() => {
-    setCurentUrl('/' + location.pathname.split('/')[1]);
+    setActive(location.pathname.indexOf(url) === 0 ? 'menuActive' : '');
   }, [location]);
+
+  const [items, setItems] = useState<MenuProps['items']>([]);
 
   useEffect(() => {
     const list = childrens?.map((e, i) => {
       return {
         key: i.toString(),
-        label: (<Link to={e.url} className={` ${styles.dropItem}`}>{e.title}</Link>),
+        label: (<Link to={url + e.url} className={` ${styles.dropItem}`}>{e.title}</Link>),
       };
     });
 
@@ -72,7 +72,7 @@ function NavDropDown({ title, url, childrens }: ItemDropDown) {
         <a onClick={(e) => e.preventDefault()}>
           <Space>
             <div
-              className={`nav-link px-3 ${styles.menuItem} ${curentUrl === url ? styles.active : styles.hover}`}
+              className={`px-3 menuItem ${active}`}
             >{title}</div>
             <DownOutlined />
           </Space>

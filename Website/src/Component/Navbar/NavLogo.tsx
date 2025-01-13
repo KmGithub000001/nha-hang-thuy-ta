@@ -13,8 +13,8 @@ function NavLogo() {
           <img src="/images/logo.webp" alt="" />
         </td>
         <td className='ps-3'>
-          <Text className={` ${styles.textLogo}`}>Nhà hàng</Text><br />
-          <Text className={`mt-1 ${styles.titleLogo}`}>THỦY TẠ ĐẦM SEN</Text>
+          <Text className={`menuItem ${styles.textLogo}`}>Nhà hàng</Text><br />
+          <Text className={`menuItem mt-1 ${styles.titleLogo}`}>THỦY TẠ ĐẦM SEN</Text>
         </td>
       </tr>
     </table>

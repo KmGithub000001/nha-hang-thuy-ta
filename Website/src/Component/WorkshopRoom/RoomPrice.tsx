@@ -130,7 +130,7 @@ function RoomPrice() {
     </ConfigProvider>
     <Row>
       <Col className={`py-3 ${styles.tbFooterText}`}
-        span={24} style={{ background: '#fa8c16' }}
+        span={24} style={{ background: '#ffd591' }}
       >Khuyến mãi</Col>
       <Col className={`py-3 ${styles.tbFooterText}`} span={6}>Màn hình LED</Col>
       <Col className={`py-3 ${styles.tbFooterText}`} span={6}>Bàn lễ tân</Col>

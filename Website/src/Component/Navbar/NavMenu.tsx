@@ -1,16 +1,27 @@
-import { Typography } from 'antd';
+
 import { Link, useLocation } from 'react-router-dom';
 import NavDropDown from './NavDropDown';
-import styles from './style.module.css';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from './color';
-const { Text } = Typography;
+
+const LinkMenu = ({ title, url }) => {
+  const location = useLocation();
+
+  const [active, setActive] = useState('');
+  useEffect(() => {
+    setActive(location.pathname.indexOf(url) === 0 ? 'menuActive' : '');
+  }, [location.pathname]);
+
+  return (<>
+    <Link to={url}
+      className={` menuItem ${active}`}
+      aria-current="page"
+    >
+      {title}
+    </Link>
+  </>);
+};
 
 function NavMenu() {
-  const location = useLocation();
-  const color = useSelector((state: RootState) => state.color.text);
-
   const menu = [
     {
       title: 'Thực đơn',
@@ -21,7 +32,7 @@ function NavMenu() {
       url: '/sanh-tiec',
       childrens: [
         {
-          title: 'Thuyển rồng Kim Long - Hoàng Long',
+          title: 'Thuyền rồng Kim Long - Hoàng Long',
           url: '/thuyen-rong-kim-long-hoang-long',
         },
         {
@@ -30,11 +41,11 @@ function NavMenu() {
         },
         {
           title: 'Sảnh Hoàng Sen - Kim Sen',
-          url: 'sanh-hoang-sen-kim-sen',
+          url: '/sanh-hoang-sen-kim-sen',
         },
         {
           title: 'Sảnh Thanh Sen',
-          url: 'sanh-thanh-sen',
+          url: '/sanh-thanh-sen',
         },
       ],
     },
@@ -48,13 +59,6 @@ function NavMenu() {
     },
   ];
 
-  const [curentUrl, setCurentUrl] = useState('');
-  useEffect(() => {
-    setCurentUrl('/' + location.pathname.split('/')[1]);
-    console.log(color);
-  }, [location]);
-
-
   return (<>
     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
       {
@@ -62,13 +66,7 @@ function NavMenu() {
           <li className="nav-item px-3" key={`NavMenu_li_${i}`}>
             {
               e.childrens !== undefined ? <NavDropDown {...e} /> :
-                <Link to={e.url}
-                  className={`nav-link px-3 ${styles.hover} ${styles.menuItem} `}
-                  style={curentUrl === e.url ? { color: '#fa541c' } : {}}
-                  aria-current="page"
-                >
-                  {e.title}
-                </Link>
+                <LinkMenu {...e} />
             }
           </li>
         ))
