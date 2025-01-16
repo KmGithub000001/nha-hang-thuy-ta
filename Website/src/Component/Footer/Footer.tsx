@@ -2,13 +2,17 @@
 import { Col, Row, Typography } from 'antd';
 import styles from './style.module.css';
 import SystemList from './SystemList';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 
 const { Text, Title } = Typography;
 
 function Footer() {
+  const logo = useSelector((state: RootState) => state.image.logo);
+  const background = useSelector((state: RootState) => state.image.background);
 
   const bodyS = {
-    background: 'url("/images/footer-bg.png")',
+    background: `url("${background}")`,
   };
 
   return (<>
@@ -17,7 +21,7 @@ function Footer() {
         <Col lg={12}>
           <Row className='mb-5'>
             <Col lg={6}>
-              <img className='w-75' src='/images/logo.webp' />
+              <img className='w-75' src={logo} />
             </Col>
             <Col lg={18}>
               <Row className='mb-3'>

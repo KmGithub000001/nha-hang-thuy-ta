@@ -2,6 +2,8 @@ import { Carousel, ConfigProvider, Image } from 'antd';
 import React, { useState } from 'react';
 import CarouItem from './CarouItem';
 import CarouContent from './CarouContent';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 
 function Home() {
 
@@ -24,8 +26,8 @@ function Home() {
     dotOffset: 50,
   };
 
-  const [imgs, setImgs] = useState(['/images/carousel-1.jpg', '/images/carousel-2.jpg', '/images/carousel-3.jpg']);
-
+  const imgs = useSelector((state: RootState) => state.image.carousel);
+  
   return (<>
     <div className='container-fluid px-0' style={carouselBS}>
       <ConfigProvider theme={{

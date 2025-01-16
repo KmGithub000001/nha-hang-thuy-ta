@@ -1,29 +1,16 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const admin = require("firebase-admin");
-
+const cors = require("cors");
 admin.initializeApp();
 
 const app = express();
 const db = admin.firestore();
 
-app.get("/images/:img", async (req, res) => {
-  const img = req.params.img;
-  try {
-    const image = await db.collection("images")
-        .where("name", "==", img)
-        .limit(1)
-        .get();
+app.use(cors());
 
-    if (image.empty) {
-      return res.status(404).send("Image not found");
-    }
-
-    const data = image.docs[0].data();
-    res.status(200).send(data);
-  } catch (erro) {
-    res.status(500).send("error: " + erro.message);
-  }
+app.get("/version", (req, res) => {
+  res.status(200).send("version 16/01/2025");
 });
 
 app.get("/all-food", async (req, res) => {

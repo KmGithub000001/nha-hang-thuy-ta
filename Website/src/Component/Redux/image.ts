@@ -2,22 +2,73 @@ import { createSlice } from '@reduxjs/toolkit';
 const images = createSlice({
   name: 'image',
   initialState: {
-    host: 'https://us-central1-ami-noti.cloudfunctions.net/api',
-    val: {},
+    carousel: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/carousel-1.jpg?alt=media&token=8c41ac07-523c-466b-a733-adf902d63a4b',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/carousel-2.jpg?alt=media&token=6945eec2-16d3-4510-aa02-5a82d48c2b57',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/carousel-3.jpg?alt=media&token=995bd57e-e445-4f22-90fe-88f1f2166823',
+    ],
+    logo: 'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/logo.webp?alt=media&token=4bd2d9be-8a9a-4d1a-b9dd-aefd067e84f4',
+    background: 'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/footer-bg.png?alt=media&token=7c0017c0-4b38-4479-bd38-13d24f0593ef',
+    headerBG: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/header-bg-1.jpg?alt=media&token=3d9d91f2-ea97-4ddf-9cc0-da44d1631d8f',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/header-bg-2.jpg?alt=media&token=826cc220-2d75-4af2-9c43-e17204df50cc',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/header-bg-3.jpg?alt=media&token=93052ab9-4d3d-4d66-9581-49cddc82c241',
+    ],
+    cuponWedding1: 'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/cupon-wedding-bg.png?alt=media&token=f1d071a3-2b53-44b5-b166-c3d462b54353',
+    workshop1: 'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/workshop-img.png?alt=media&token=7b797c5f-d33e-408d-9082-bf141fd8dfb5',
+    loby1: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-01.png?alt=media&token=48beefbc-7505-47ac-9226-779db4ee12b1',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-02.png?alt=media&token=2729a2df-7ab7-4ae4-bae6-eff147cadf4b',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-03.png?alt=media&token=ed4950ff-8180-4ce6-84f1-f759577e2189',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-04.png?alt=media&token=fb57db98-3af0-4279-b3f3-0a1141c05dbb',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-05.png?alt=media&token=c41908f3-2c7f-4f85-bb91-6743be8bbd0d',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-06.png?alt=media&token=fce454af-31c4-44ca-99fe-8cca544194e6',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-1-07.png?alt=media&token=1bf8f864-5907-4ec0-9008-49b014210dfa',
+    ],
+    loby2: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-01.png?alt=media&token=13c53007-8bd9-4c2b-863c-f47c67f05482',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-02.png?alt=media&token=fdf34a70-9a6a-437f-9661-577087e695b3',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-03.png?alt=media&token=a05c4fef-f582-4533-99db-bbe7f3372d7f',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-04.png?alt=media&token=c3e1f733-ef4a-4b56-a0d5-b42e8ffe327c',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-05.png?alt=media&token=2edfb645-e4cb-4095-909c-32d9a1674b01',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-06.png?alt=media&token=be4f16bb-6b3b-404a-8a65-e5e275d48fa3',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-07.png?alt=media&token=cab2a113-3f6b-44a7-83b4-60351038fdd5',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-08.png?alt=media&token=d0dde607-3e93-4966-ba68-f330535782a4',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-09.png?alt=media&token=126ac0ec-eece-41e4-8c2c-6208dad05966',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-2-10.png?alt=media&token=552cede9-9b12-4faf-9f6b-3a1806d47f18',
+    ],
+    loby3: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-03.png?alt=media&token=fa1338c8-0bb0-49a5-a0a3-f9d3f9dd8a9d',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-02.png?alt=media&token=3b4cd033-502d-448b-8cfd-92d2843c7cc9',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-03.png?alt=media&token=fa1338c8-0bb0-49a5-a0a3-f9d3f9dd8a9d',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-04.png?alt=media&token=f27cc202-67e6-4454-82f8-ad951114e5ff',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-05.png?alt=media&token=734fa355-c8ab-4f58-b672-7108eb4bc09e',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-06.png?alt=media&token=dc4d1325-401d-4791-ad3e-1f2fe5089cc2',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-07.png?alt=media&token=5053233b-6e34-4a64-883d-5afd16e6056b',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-08.png?alt=media&token=5aa1c486-e23e-4f0f-81cf-d076e30d960a',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-09.png?alt=media&token=1d6efd5d-35eb-4bfa-a7f9-110226bc56f3',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-10.png?alt=media&token=9fc625bb-44fc-4011-9b66-e22a55a73d25',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-3-11.png?alt=media&token=62bf8e45-cebf-4a73-8b08-83b63c23651e',
+    ],
+    loby4: [
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-01.png?alt=media&token=db9c1aa5-dd15-4eac-aec9-2298a0272de6',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-02.png?alt=media&token=66ecb7af-b291-4813-8713-af43ff1b9f27',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-03.png?alt=media&token=852a509e-a486-4f56-9c07-dd1321413656',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-04.png?alt=media&token=dc9b32e2-11e1-4b64-a6f0-33c326319809',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-05.png?alt=media&token=8f3aef9c-5269-4404-9cd3-def3913d70a8',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-06.png?alt=media&token=22992c4b-1c46-4304-b550-8fbdd0833139',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-07.png?alt=media&token=03f01ab1-4707-4bac-bc3e-82effa079a82',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-08.png?alt=media&token=d6800ed0-c075-4d55-aed8-d605b9009783',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-09.png?alt=media&token=68447bc6-df19-412a-b77a-997c76993674',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-10.png?alt=media&token=f7809fda-bbce-4d9d-97c2-4702660f94c3',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-11.png?alt=media&token=3f94dff1-15e6-463a-af36-d904dcaf246a',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-12.png?alt=media&token=e0b066dd-7856-4d99-b163-34e3c41f28a9',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-13.png?alt=media&token=005f54d4-344b-41fc-a959-c0496b33e4df',
+      'https://firebasestorage.googleapis.com/v0/b/ami-noti.firebasestorage.app/o/loby-4-14.png?alt=media&token=bcaa4369-0f2a-464f-9553-1056bf45b4d2',
+    ],
   },
   reducers: {
-    get: (state, act) => {
-      if (state.val[act.payload.img] === undefined) {
-        fetch(`${state.host}/imgs/${act.payload.img}`)
-          .then(rs => rs.json())
-          .then(js => {
-            state.val = { ...state.val, [act.payload.img]: js.data };
-          })
-          .catch(erro => console.log(erro));
-      }
-
-    },
   },
 });
-export const { get } = images.actions;
+export const { } = images.actions;
 export default images.reducer;

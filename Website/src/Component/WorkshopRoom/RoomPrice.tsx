@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../Redux/store';
 import { useEffect, useState } from 'react';
 import styles from './style.module.css';
-import ColumnGroup from 'antd/es/table/ColumnGroup';
-import Column from 'antd/es/table/Column';
 
 interface DataType {
   address: string;

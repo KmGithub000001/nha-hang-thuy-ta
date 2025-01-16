@@ -1,19 +1,25 @@
 import { Col, ConfigProvider, Image, Row, Typography } from 'antd';
 import HeaderBG from '../HeaderBackground/HeaderBG';
 import MoreLoby from './MoreLoby';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 
 const { Text } = Typography;
 
 function Loby1() {
+  const headerBackground = useSelector((state: RootState) => state.image.headerBG[0]);
+  const images = useSelector((state: RootState) => state.image.loby1);
+
   const bg = {
     text: 'THUYỀN RỒNG',
     title: 'KIM LONG - HOÀNG LONG',
-    img: '/images/header-bg-1.jpg',
+    img: headerBackground,
   };
+
   return (<>
     <HeaderBG {...bg} />
     <div className="container py-5">
-      <img src="/images/loby-1-01.png" className='w-100 mb-5' />
+      <img src={images[0]} className='w-100 mb-5' />
       <h5 className=" mb-3" style={{ textAlign: 'justify' }}>
         Điểm đập vào mắt du khách khi đến tham công viên văn hóa Đầm Sen,
         là hai chiếc thuyền rồng ngạo nghễ rướn thân mình hưởng ra giữa lòng hồ.
@@ -39,31 +45,30 @@ function Loby1() {
       </p>
       <Row gutter={10}>
         <Col lg={16} className='mb-2'>
-          <Image src='/images/loby-1-02.png' width={'100%'} />
+          <Image src={images[1]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
         </Col>
         <Col lg={8}>
           <Row gutter={10}>
             <Col className='mb-2' span={24}>
-              <Image src='/images/loby-1-03.png' width={'100%'} />
+              <Image src={images[2]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
             </Col>
             <Col className='mb-2' span={24}>
-              <Image src='/images/loby-1-04.png' width={'100%'} />
+              <Image src={images[3]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
             </Col>
           </Row>
         </Col>
         <Col lg={8}>
           <Row gutter={10}>
             <Col className='mb-2' span={24}>
-              <Image src='/images/loby-1-05.png' width={'100%'} />
+              <Image src={images[4]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
             </Col>
             <Col className='mb-2' span={24}>
-              <Image src='/images/loby-1-06.png' width={'100%'} />
+              <Image src={images[5]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
             </Col>
           </Row>
         </Col>
-
         <Col lg={16} className='mb-2'>
-          <Image src='/images/loby-1-07.png' width={'100%'} />
+          <Image src={images[6]} width={'100%'} height={'100%'} style={{ objectFit: 'cover' }} />
         </Col>
       </Row>
       <MoreLoby curID={1} />
