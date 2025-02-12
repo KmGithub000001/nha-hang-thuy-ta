@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import menu from './menu';
+import food from './food';
 import room from './room';
 import image from './image';
+import menu from './menu';
+import validator from './validator';
 const store = configureStore({
   reducer: {
-    menu: menu,
+    food: food,
     room: room,
     image: image,
+    menu: menu,
+    validator: validator,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

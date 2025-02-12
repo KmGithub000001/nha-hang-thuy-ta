@@ -1,12 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchMenu } from './menuThunk';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface MenuItem {
   id: number;
-  type: string;
-  image: string;
-  children: any;
+  idparent: number;
+  name: string;
+  url: string;
+  children?: MenuItem[];
 }
+
+const fetchMenu = createAsyncThunk(
+  'menu/fetchMenu',
+  async (_, thunkAPI) => {
+    const rs = await fetch('https://us-central1-ami-noti.cloudfunctions.net/api/menu');
+    const data = await rs.json();
+
+    let menuData = data.filter((e) => e.idparent === null);
+
+    menuData = menuData.map((e) => {
+      e.children = data.filter((e1) => e1.idparent === e.id);
+      return e;
+    });
+
+    menuData = menuData.sort((a, b) => a.id - b.id);
+    
+    return menuData;
+  },
+);
 
 const menu = createSlice({
   name: 'menu',
@@ -35,5 +54,6 @@ const menu = createSlice({
       });
   },
 });
-export const { } = menu.actions;
+
+export { fetchMenu };
 export default menu.reducer;
